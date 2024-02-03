@@ -11,8 +11,9 @@ const CrearFactura = () => {
     const [razonSocial, setRazonSocial] = useState('');
     const [porcentajeIgv, setPorcentajeIgv] = useState('');
 
-    const [dfactura, setDeFactura] = useState(0);
     const [nuevoDatoId,setNuevoDatoId] = useState(null);
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,22 +33,25 @@ const CrearFactura = () => {
                 },
                 body: JSON.stringify(factura)
             });
-            const data = await response.json();
-            console.log(data);
 
-            setNuevoDatoId(data.idFactura);
-
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                const data = await response.json();
+                console.log(data);
+                setNuevoDatoId(data.idFactura);
+            }
         } catch (error) {
             console.error('Hubo un error al crear la categoria:', error);
         }
     };
 
 
-    // useEffect(() => {
-    //     fetch("https://localhost:7252/api/Factura/ultimaFactura")
-    //         .then((response) => response.json())
-    //         .then((data) => setDeFactura(data.idFactura));
-    // }, []);
+    useEffect(() => {
+        if (nuevoDatoId) {
+            console.log('Nuevo dato ID:', nuevoDatoId);
+        }
+    }, [nuevoDatoId]);
 
     return (
         <div>
@@ -79,12 +83,10 @@ const CrearFactura = () => {
 
             </form>
             <div className='label'>
-                <ObtenerFactura id={nuevoDatoId}/>
+               {nuevoDatoId && <ObtenerFactura id={nuevoDatoId}/>}
             </div>
-            <CrearDetalle />
-            <div>
-                <DetallesFacturaId idFactura={nuevoDatoId} />
-            </div>
+            <CrearDetalle />         
+            
 
         </div>
     );

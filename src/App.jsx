@@ -32,7 +32,7 @@ function App() {
         <Route path='/facturas' element={<ListaFacturas/>} />
         <Route path='/crearFactura' element={<CrearFactura/>}/>
         <Route path='/crearDetalle' element={<CrearDetalle/>}/>
-        <Route path='/listarDetalle/:id' element={<DetallesFacturaId/>}/>
+        <Route path='/listarDetalle' element={<DetallesFacturaId/>}/>
         <Route path='/obtenerfactura' element={<ObtenerFactura/>}/>
       </Routes>
     </Router>

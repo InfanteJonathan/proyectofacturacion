@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import DetallesFacturaId from './listarDetalle';
 
+
 const CrearDetalle = () =>{
     const[idItem, setIdItem] = useState('');
     const[idFactura, setIdFactura] = useState('');
@@ -11,6 +12,12 @@ const CrearDetalle = () =>{
     const[cantidad, setCantidad] = useState('');
 
     const[productos,setProductos] = useState([]);
+    const [key, setKey] = useState(0);
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+
+
+    
 
     const handleProductoChange = (e) => {
         const idProductoSeleccionado = Number(e.target.value);
@@ -22,6 +29,8 @@ const CrearDetalle = () =>{
             setPrecio(productoSeleccionado.precio);
         }
     };
+
+    
 
     const handleSubmit = async(event)=>{
         event.preventDefault();
@@ -46,9 +55,12 @@ const CrearDetalle = () =>{
             });
             const data = await response.json();
             console.log(data);
+            setIsButtonClicked(true);
+            setKey(prevkey => prevkey + 1);
+
 
         }catch(error){
-            console.error('Hubo un error al crear la categoria:',error);
+            console.error('Hubo un error al crear el Detalle:',error);
         }
     };
 
@@ -76,47 +88,49 @@ const CrearDetalle = () =>{
       
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                ID Item:
-                <input type="text" value={idItem} onChange={e => setIdItem(e.target.value)} />
-            </label>
-            <label>
-                Id Factura:
-                <input type="number" value={idFactura} onChange={e => setIdFactura(e.target.value)} />
-            </label>
-            <label>
-                ID Producto:
-                <select value={idProducto} onChange={handleProductoChange}>
-                    {productos.map(producto => (
-                        <option key={producto.idProducto} value={producto.idProducto}>
-                            {producto.idProducto}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label>
-                Codigo Producto:
-                <input type="text" value={codigoProducto} onChange={() => {}}/>
-            </label>
-            <label>
-                Nombre Producto:
-                <input type="text" value={nombreProducto} onChange={() => {}} />
-            </label>
-            <label>
-                Precio:
-                <input type="number" value={precio} onChange={() => {}}/>
-            </label>
-            <label>
-                Cantidad:
-                <input type="number" value={cantidad} onChange={e => setCantidad(e.target.value)} />
-            </label>
-            <div>
-                <button type="submit">Crear Factura</button>            
-            </div>  
-
+        <>        
+            <form onSubmit={handleSubmit}>
+                <label>
+                    ID Item:
+                    <input type="text" value={idItem} onChange={e => setIdItem(e.target.value)} />
+                </label>
+                <label>
+                    Id Factura:
+                    <input type="number" value={idFactura} onChange={e => setIdFactura(e.target.value)} />
+                </label>
+                <label>
+                    ID Producto:
+                    <select value={idProducto} onChange={handleProductoChange}>
+                        {productos.map(producto => (
+                            <option key={producto.idProducto} value={producto.idProducto}>
+                                {producto.idProducto}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label>
+                    Codigo Producto:
+                    <input type="text" value={codigoProducto} onChange={() => {}}/>
+                </label>
+                <label>
+                    Nombre Producto:
+                    <input type="text" value={nombreProducto} onChange={() => {}} />
+                </label>
+                <label>
+                    Precio:
+                    <input type="number" value={precio} onChange={() => {}}/>
+                </label>
+                <label>
+                    Cantidad:
+                    <input type="number" value={cantidad} onChange={e => setCantidad(e.target.value)} />
+                </label>
+                <div>
+                    <button type="submit">Crear Factura</button>            
+                </div> 
+                {isButtonClicked && <DetallesFacturaId key={key}/>}
+            </form>
             
-        </form>
+        </>
     );
 
 }

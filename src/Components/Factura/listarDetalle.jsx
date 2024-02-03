@@ -1,11 +1,28 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import  {Button}  from "react-bootstrap";
+import FacturaContext from "../FacturaContext";
 
 
-const DetallesFacturaId = ({id}) => {
+const DetallesFacturaId = () => {
     const [detalles,setDetalles] = useState([]);
 
-    const obtenerDetalles = async () => {
+
+    const obtenerUltimaFactura = async () => {
+        try{
+            const response = await fetch(`https://localhost:7252/api/Factura/ultimaFactura`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                const id = await response.json();
+                console.log('ID de la última factura:', id);
+                return id;
+            }
+        }catch(error){
+            console.error('Error al obtener la última factura',error);
+        }
+    };
+
+    const obtenerDetalles = async (id) => {
         try{
             const response = await fetch(`https://localhost:7252/api/Detalles/listarporidfactura/${id}`);
             if (!response.ok) {
@@ -20,6 +37,18 @@ const DetallesFacturaId = ({id}) => {
         }
     };
 
+    const fetchData = async () => {
+        const id = await obtenerUltimaFactura();
+        console.log('Valor de id:', id);
+        if (id) {
+            obtenerDetalles(id);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     const eliminarDetalle = (idItem) => {
         fetch(`https://localhost:7252/api/Detalles/eliminar/${idItem}`, {
             method: 'DELETE',
@@ -27,19 +56,13 @@ const DetallesFacturaId = ({id}) => {
         .then(res => {
             if (res.ok) {
                 alert('Item Eliminado con Exito');
-                obtenerDetalles();
+                fetchData();
             } else {
                 alert('Hubo un error al eliminar el Item');
             }
         })
         .catch(err => console.log(err));
     };
-
-    useEffect(() => {
-        obtenerDetalles();
-    }, [id]);
-
-    
 
     return (
         <table className="table">
