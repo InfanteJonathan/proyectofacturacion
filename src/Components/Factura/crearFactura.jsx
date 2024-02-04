@@ -55,36 +55,48 @@ const CrearFactura = () => {
 
     return (
         <div>
+            <h1>
+                Crear Factura
+            </h1>
+            <br></br>
             <form onSubmit={handleSubmit}>
                 <div className="row g-3">
-                    <div className="col-sm-4">
+                    <div className="col-sm-3">
+                        Num Factura
                         <input type="text" value={numeroFactura}
                             onChange={e => setNumeroFactura(e.target.value)}
                             className="form-control" placeholder="N° Factura" aria-label="City" />
                     </div>
                     <div className="col-sm">
+                        Ruc Cliente
                         <input type="text" value={rucCliente}
                             onChange={e => setRucCliente(e.target.value)}
                             className="form-control" placeholder="Ruc Cliente" aria-label="City" />
                     </div>
                     <div className="col-sm">
+                        Razón Social
                         <input type="text"
                             value={razonSocial}
                             onChange={e => setRazonSocial(e.target.value)}
                             className="form-control" placeholder="Razon Social" aria-label="State" />
                     </div>
                     <div className="col-sm">
+                        Porcentaje Igv
                         <input type="number" value={porcentajeIgv}
                             onChange={e => setPorcentajeIgv(e.target.value)}
                             className="form-control" placeholder="Porcentaje IGV" />
                     </div>
                 </div>
-                <button type="submit">Nueva Factura</button>
+                <br></br>
+                <button className='btn btn-primary' type="submit">Nueva Factura</button>
+                <p>{nuevoDatoId}</p>
+                <br></br>
 
             </form>
-            <div className='label'>
+            {/* <div className='label'>
                {nuevoDatoId && <ObtenerFactura id={nuevoDatoId}/>}
-            </div>
+            </div> */}
+            
             <CrearDetalle />         
             
 

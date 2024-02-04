@@ -14,9 +14,7 @@ function ListaFacturas(){
   return (
     <div>
       <h1>Lista de Facturas</h1>
-      <Button className='btn btn-primary'>
-        <Link  to={`/crearFactura`}>Crear</Link>
-      </Button> 
+        <Link className='btn btn-success'  to={`/crearFactura`}>Crear</Link>
       <hr/>               
       <table className="table table-dark table-striped">
         <thead>
@@ -29,6 +27,7 @@ function ListaFacturas(){
             <th scope="col">Porcentaje IGV</th>
             <th scope="col">IGV</th>
             <th scope='col'>Total</th>
+            <th scope='col'>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -43,9 +42,7 @@ function ListaFacturas(){
               <td>{item.igv}</td>
               <td>{item.total}</td>              
               <td>
-                <Button className='btn btn-danger'>
-                  <Link  to={`/eliminarFactura/${item.idFactura}`}>Eliminar</Link>
-                </Button>
+                  <Link className='btn btn-danger'  to={`/eliminarFactura/${item.idFactura}`}>Eliminar</Link>
               </td>
             </tr>
           ))}

@@ -13,14 +13,20 @@ import CrearFactura from './Components/Factura/crearFactura';
 import CrearDetalle from './Components/Factura/crearDetalle';
 import DetallesFacturaId from './Components/Factura/listarDetalle';
 import ObtenerFactura from './Components/Factura/obtenerFactura';
+import MenuPrincipal from './Components/Menu/Menu';
+import LoginComponent from './Components/Login/ingresar';
 
 import './App.css'
+import Navbar from './Components/Menu/Navbar';
 
 function App() {
   return(
     <>
     <Router>
+      <Navbar/>
       <Routes>
+        <Route path='*' element={<MenuPrincipal/>} />
+        <Route path='/login' element={<LoginComponent/>} />
         <Route path='/categorias' element={<ListaCategoria/>} />
         <Route path='/crear' element={<FormularioCategoria/>}/>
         <Route path='/editar/:id' element={<EditarFamiliaProducto/>}/>

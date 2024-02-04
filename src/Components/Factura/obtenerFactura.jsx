@@ -20,12 +20,34 @@ const ObtenerFactura = ({ id }) => {
   if (!facturaData) return <div>Cargando...</div>;
 
   return (
-    <div>
-      <p>ID Factura: {facturaData.idFactura}</p>
-      <p>NumFactura: {facturaData.numeroFactura}</p>
-      <p>IGV: {facturaData.igv}</p>
-      <p>Total: {facturaData.total}</p>
-    </div>
+    <>
+      {/* <div className='form'>
+        <p>ID Factura: {facturaData.idFactura}</p>
+        <p>NumFactura: {facturaData.numeroFactura}</p>
+        <p>IGV: {facturaData.igv}</p>
+        <p>Total: {facturaData.total}</p>
+      </div> */}
+      <div class="mb-1 row">
+        <label  class="col-sm-18 col-form-label">SubTotal :</label>
+        <div class="col-sm-1">
+          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.subTotal}/>
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <label  class="col-sm-18 col-form-label">IGV :</label>
+        <div class="col-sm-4">
+          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.igv}/>
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <label  class="col-sm-18 col-form-label">Total :</label>
+        <div class="col-sm-4">
+          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.total}/>
+        </div>
+      </div>
+     
+      
+    </>
   );
 };
 
