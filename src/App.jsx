@@ -20,29 +20,33 @@ import './App.css'
 import Navbar from './Components/Menu/Navbar';
 
 function App() {
-  return(
-    <>
+  return (
     <Router>
-      <Navbar/>
       <Routes>
-        <Route path='*' element={<MenuPrincipal/>} />
-        <Route path='/login' element={<LoginComponent/>} />
-        <Route path='/categorias' element={<ListaCategoria/>} />
-        <Route path='/crear' element={<FormularioCategoria/>}/>
-        <Route path='/editar/:id' element={<EditarFamiliaProducto/>}/>
-        <Route path='/eliminar/:id' element={<EliminarFamiliaProducto/>}/>
-        <Route path='/productos' element={<ListaProductos/>} />
-        <Route path='/editarProducto/:id' element={<EditarProducto/>}/>
-        <Route path='/crearProducto' element={<CrearProductoFormulario/>}/>
-        <Route path='/eliminarProducto/:id' element={<EliminarProducto/>}/>
-        <Route path='/facturas' element={<ListaFacturas/>} />
-        <Route path='/crearFactura' element={<CrearFactura/>}/>
-        <Route path='/crearDetalle' element={<CrearDetalle/>}/>
-        <Route path='/listarDetalle' element={<DetallesFacturaId/>}/>
-        <Route path='/obtenerfactura' element={<ObtenerFactura/>}/>
+        <Route path="/" element={<LoginComponent />} />
+        <Route path="/*" element={
+          <>
+            <Navbar />
+            <Routes>
+              <Route path='*' element={<MenuPrincipal/>} />
+              <Route path='categorias' element={<ListaCategoria/>} />
+              <Route path='crear' element={<FormularioCategoria/>}/>
+              <Route path='editar/:id' element={<EditarFamiliaProducto/>}/>
+              <Route path='eliminar/:id' element={<EliminarFamiliaProducto/>}/>
+              <Route path='productos' element={<ListaProductos/>} />
+              <Route path='editarProducto/:id' element={<EditarProducto/>}/>
+              <Route path='crearProducto' element={<CrearProductoFormulario/>}/>
+              <Route path='eliminarProducto/:id' element={<EliminarProducto/>}/>
+              <Route path='facturas' element={<ListaFacturas/>} />
+              <Route path='crearFactura' element={<CrearFactura/>}/>
+              <Route path='crearDetalle' element={<CrearDetalle/>}/>
+              <Route path='listarDetalle' element={<DetallesFacturaId/>}/>
+              <Route path='obtenerfactura' element={<ObtenerFactura/>}/>
+            </Routes>
+          </>
+        } />
       </Routes>
     </Router>
-    </>
   );
 }
 

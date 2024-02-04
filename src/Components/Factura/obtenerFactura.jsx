@@ -27,24 +27,33 @@ const ObtenerFactura = ({ id }) => {
         <p>IGV: {facturaData.igv}</p>
         <p>Total: {facturaData.total}</p>
       </div> */}
-      <div class="mb-1 row">
+      {/* <div class="mb-1 row">
         <label  class="col-sm-18 col-form-label">SubTotal :</label>
         <div class="col-sm-1">
-          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.subTotal}/>
+          <input type="number" readonly class="form-control-plaintext"  value={facturaData.subtotal}/>
         </div>
       </div>
       <div class="mb-1 row">
         <label  class="col-sm-18 col-form-label">IGV :</label>
         <div class="col-sm-4">
-          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.igv}/>
+          <input type="number" readonly class="form-control-plaintext"  value={facturaData.igv}/>
         </div>
       </div>
       <div class="mb-1 row">
         <label  class="col-sm-18 col-form-label">Total :</label>
         <div class="col-sm-4">
-          <input type="number" readonly class="form-control-plaintext" id="staticEmail" value={facturaData.total}/>
+          <input type="number" readonly class="form-control-plaintext" value={facturaData.total}/>
         </div>
+      </div> */}
+      <br></br>
+      <div>
+        <ul className="list-group">
+          <li className="list-group">SubTotal :  {facturaData.subtotal}</li>
+          <li className="list-group">IGV      :  {facturaData.igv}</li>
+          <li className="list-group">Total    :  {facturaData.total}</li>
+        </ul>
       </div>
+      
      
       
     </>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import "./style.css";
 import CrearDetalle from './crearDetalle';
-import DetallesFacturaId from './listarDetalle';
-import ObtenerFactura from './obtenerFactura';
+
 
 
 const CrearFactura = () => {
@@ -55,6 +53,7 @@ const CrearFactura = () => {
 
     return (
         <div>
+            <br></br>
             <h1>
                 Crear Factura
             </h1>
@@ -65,7 +64,7 @@ const CrearFactura = () => {
                         Num Factura
                         <input type="text" value={numeroFactura}
                             onChange={e => setNumeroFactura(e.target.value)}
-                            className="form-control" placeholder="N° Factura" aria-label="City" />
+                            className="form-control" placeholder="Ejem: F001" aria-label="City" />
                     </div>
                     <div className="col-sm">
                         Ruc Cliente
@@ -84,15 +83,22 @@ const CrearFactura = () => {
                         Porcentaje Igv
                         <input type="number" value={porcentajeIgv}
                             onChange={e => setPorcentajeIgv(e.target.value)}
-                            className="form-control" placeholder="Porcentaje IGV" />
+                            className="form-control" placeholder="Ejem: 0.18" />
                     </div>
+
+                </div>
+                <br></br>
+                <div className="col-sm-2">
+                        ID Factura
+                    <input type="number" value={nuevoDatoId}s
+                            className="form-control" readOnly />
                 </div>
                 <br></br>
                 <button className='btn btn-primary' type="submit">Nueva Factura</button>
-                <p>{nuevoDatoId}</p>
-                <br></br>
+
 
             </form>
+            <br></br>
             {/* <div className='label'>
                {nuevoDatoId && <ObtenerFactura id={nuevoDatoId}/>}
             </div> */}

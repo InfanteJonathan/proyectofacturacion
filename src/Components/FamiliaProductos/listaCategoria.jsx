@@ -14,40 +14,43 @@ function ListaCategoria(){
   return (
     <div>
       <h1>Lista de Categorias</h1>
-      <table className="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th scope="col">IdCategoria</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Activo</th>
-            <th scope='col'>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((item)=>(
-            <tr key={item.idFamilia}>
-              <td>{item.idFamilia}</td>
-              <td>{item.codigo}</td>
-              <td>{item.nombre}</td>
-              <td>{item.activo? 1:0}</td>
-              <td>
-                <Button className='btn btn-success'>
-                  <Link  to={`/editar/${item.idFamilia}`}>Editar</Link> 
-                </Button>
-                /
-                <Button className='btn btn-primary'>
-                  <Link  to={`/crear/`}>Crear</Link>
-                </Button>
-                /
-                <Button className='btn btn-danger'>
-                  <Link  to={`/eliminar/${item.idFamilia}`}>Eliminar</Link>
-                </Button>
-              </td>
+      <br></br>
+      <Button className='btn btn-success'>
+        <Link  to={`/crear/`} style={{ textDecoration: 'none', color: 'inherit' }}>Nueva Categoria</Link>
+      </Button>
+      <div>
+        <br></br>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">IdCategoria</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Activo</th>
+              <th scope='col'>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data?.map((item)=>(
+              <tr key={item.idFamilia}>
+                <td>{item.idFamilia}</td>
+                <td>{item.codigo}</td>
+                <td>{item.nombre}</td>
+                <td>{item.activo? 1:0}</td>
+                <td>
+                  <Button className='btn btn-secondary'>
+                    <Link  to={`/editar/${item.idFamilia}`} style={{ textDecoration: 'none', color: 'inherit' }} >Editar</Link> 
+                  </Button>         
+                  /
+                  <Button className='btn btn-danger'>
+                    <Link  to={`/eliminar/${item.idFamilia}`} style={{ textDecoration: 'none', color: 'inherit' }}>Eliminar</Link>
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       </div>    
   );
 }

@@ -29,7 +29,7 @@ const DetallesFacturaId = () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             } else {
                 const data = await response.json();
-                console.log('Datos recibidos de la API:', data);
+
                 setDetalles(data);
             }
         }catch(error){
@@ -39,7 +39,7 @@ const DetallesFacturaId = () => {
 
     const fetchData = async () => {
         const id = await obtenerUltimaFactura();
-        console.log('Valor de id:', id);
+
         if (id) {
             obtenerDetalles(id);
         }
@@ -56,13 +56,15 @@ const DetallesFacturaId = () => {
         .then(res => {
             if (res.ok) {
                 alert('Item Eliminado con Exito');
-                fetchData();
+                return res.json(); // Asegúrate de que la eliminación se ha completado antes de volver a buscar los datos
             } else {
                 alert('Hubo un error al eliminar el Item');
             }
         })
+        .then(() => fetchData()) // Llama a fetchData después de que se haya completado la eliminación
         .catch(err => console.log(err));
     };
+    
 
     return (
         <table className="table">
@@ -79,7 +81,6 @@ const DetallesFacturaId = () => {
             </thead>
             <tbody>
             {detalles.map(detalle => {
-                console.log('Renderizando detalle:', detalle);
                 return (
                     <tr key={detalle.idItem}>
                         <td>{detalle.idItem}</td>

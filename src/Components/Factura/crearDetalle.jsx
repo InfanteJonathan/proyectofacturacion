@@ -102,7 +102,7 @@ const CrearDetalle = () =>{
                 <div className='row g-3'>
                     <div className='col-sm-2'>
                         ID Item
-                        <input type="text" className="form-control" value={idItem} onChange={e => setIdItem(e.target.value)} />
+                        <input type="text" className="form-control" placeholder='Ejem: 0001' value={idItem} onChange={e => setIdItem(e.target.value)} />
                     </div>
                     <div className='col-sm'>
                         Id Factura
@@ -134,16 +134,17 @@ const CrearDetalle = () =>{
                         Cantidad
                         <input type="number" className="form-control" value={cantidad} onChange={e => setCantidad(e.target.value)} />
                     </div>
-                    <div>
-                        <button className='btn btn-secondary' type="submit">Insertar Detalles</button>              
+                    <div className='col-sm d-flex'>
+                        <button className='btn btn-success' type="submit">Agregar</button>              
                     </div>
                            
                     
-                    isButtonClicked && <DetallesFacturaId key={key}/>
+                    {isButtonClicked && <DetallesFacturaId key={key}/>}
                 </div>
             </form>
             <div className='label'>
-                isButtonClicked && nuevoDatoId && <ObtenerFactura id={nuevoDatoId} key={key}/>
+                {/* isButtonClicked && nuevoDatoId && <ObtenerFactura id={nuevoDatoId} key={key}/> */}
+                <ObtenerFactura id={nuevoDatoId} key={key}/>
             </div>
         </>
     );

@@ -16,7 +16,7 @@ function ListaFacturas(){
       <h1>Lista de Facturas</h1>
         <Link className='btn btn-success'  to={`/crearFactura`}>Crear</Link>
       <hr/>               
-      <table className="table table-dark table-striped">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -37,7 +37,7 @@ function ListaFacturas(){
               <td>{item.numeroFactura}</td>
               <td>{item.rucCliente}</td>
               <td>{item.razonSocial}</td>
-              <td>{item.subTotal}</td>
+              <td>{item.subtotal}</td>
               <td>{item.porcentajeIgv}</td>
               <td>{item.igv}</td>
               <td>{item.total}</td>              

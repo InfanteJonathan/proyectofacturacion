@@ -37,21 +37,25 @@ const FormularioCategoria = () =>{
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Código:
-                <input type="text" value={codigo} onChange={e => setCodigo(e.target.value)} />
-            </label>
-            <label>
-                Nombre:
-                <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} />
-            </label>
-            <label>
-                Activo:
-                <input type="checkbox" checked={activo} onChange={e => setActivo(e.target.checked)} />
-            </label>
-            <button type="submit">Crear categoría</button>
-        </form>
+        <>
+        <br></br>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Código:
+                    <input type="text" value={codigo} onChange={e => setCodigo(e.target.value)} />
+                </label>
+                <label>
+                    Nombre:
+                    <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} />
+                </label>
+                <label>
+                    Activo:
+                    <input type="checkbox" checked={activo} onChange={e => setActivo(e.target.checked)} />
+                </label>
+                <button type="submit">Crear categoría</button>
+            </form>
+        </>
+        
     );
 
 }
