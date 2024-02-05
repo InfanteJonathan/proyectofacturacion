@@ -1,25 +1,17 @@
-// import { useEffect } from "react";
-// import { useParams } from "react-router-dom";
+const eliminarDetalle = async (idItem) => {
+    try {
+        const response = await fetch(`https://localhost:7252/api/Detalles/eliminar/${idItem}`, {
+            method: 'DELETE',
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+            alert('Item Eliminado con Exito');
+        }
+    } catch (error) {
+        console.error('Error al eliminar detalle de factura', error);
+        alert('Hubo un error al eliminar el Item');
+    }
+};
 
-// const EliminarDetalle = () => {
-//     const { id } = useParams();
-
-
-//     useEffect(() => {
-//         fetch(`https://localhost:7252/api/Detalles/eliminar/${id}`, {
-//             method: 'DELETE',
-//         })
-//         .then(res => {
-//             if (res.ok) {
-//                 alert('Item Eliminado con Exito');
-//             } else {
-//                 alert('Hubo un error al eliminar el Item');
-//             }
-//         })
-//         .catch(err => console.log(err));
-//     }, [id]); // Dependencias del efecto
-
-//     return null; // No renderiza nada
-// };
-
-// export default EliminarDetalle;
+export default eliminarDetalle;

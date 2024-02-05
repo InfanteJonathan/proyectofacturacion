@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import DetallesFacturaId from './listarDetalle';
 import ObtenerFactura from './obtenerFactura';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const CrearDetalle = () =>{
@@ -97,8 +99,10 @@ const CrearDetalle = () =>{
       
 
     return (
-        <>        
-            <form onSubmit={handleSubmit}>
+        <>
+            <ObtenerFactura id={nuevoDatoId} key={key}/>
+        <h2>DETALLES</h2>       
+            <form className='rounded p-3 border' style={{backgroundColor: "lightblue"}} onSubmit={handleSubmit}>
                 <div className='row g-3'>
                     <div className='col-sm-2'>
                         ID Item
@@ -122,10 +126,6 @@ const CrearDetalle = () =>{
                         Codigo Producto
                         <input type="text" className="form-control" value={codigoProducto} onChange={() => {}}/>
                     </div>
-                    {/* <div className='col-sm'>
-                        Nombre Producto
-                        <input type="text" className="form-control" value={nombreProducto} onChange={() => {}} />
-                    </div> */}
                     <div className='col-sm'>
                         Precio
                         <input type="number" className="form-control" value={precio} onChange={() => {}}/>
@@ -142,10 +142,11 @@ const CrearDetalle = () =>{
                     {isButtonClicked && <DetallesFacturaId key={key}/>}
                 </div>
             </form>
-            <div className='label'>
-                {/* isButtonClicked && nuevoDatoId && <ObtenerFactura id={nuevoDatoId} key={key}/> */}
-                <ObtenerFactura id={nuevoDatoId} key={key}/>
+            <br></br>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <Link className='btn btn-secondary' to={"/facturas"}>SALIR</Link>
             </div>
+            
         </>
     );
 

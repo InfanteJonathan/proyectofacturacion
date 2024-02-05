@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CrearDetalle from './crearDetalle';
+import ObtenerFactura from './obtenerFactura';
 
 
 
@@ -53,12 +54,12 @@ const CrearFactura = () => {
 
     return (
         <div>
-            <br></br>
-            <h1>
-                Crear Factura
-            </h1>
-            <br></br>
-            <form onSubmit={handleSubmit}>
+            <div  style={{justifyContent:"center"}}>
+                <h1>
+                    Factura
+                </h1>                 
+            </div>
+            <form className='rounded p-3 border' style={{backgroundColor: "lightblue"}} onSubmit={handleSubmit}>
                 <div className="row g-3">
                     <div className="col-sm-3">
                         Num Factura
@@ -88,24 +89,18 @@ const CrearFactura = () => {
 
                 </div>
                 <br></br>
-                <div className="col-sm-2">
-                        ID Factura
-                    <input type="number" value={nuevoDatoId}s
-                            className="form-control" readOnly />
-                </div>
-                <br></br>
                 <button className='btn btn-primary' type="submit">Nueva Factura</button>
-
-
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <div>
+                        <ul className='d-flex flex-row rounded ' style={{backgroundColor: "lightblue", alignItems: 'flex-start'}}>
+                            <div>
+                                <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>ID FACTURA :  {nuevoDatoId}</li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
             </form>
-            <br></br>
-            {/* <div className='label'>
-               {nuevoDatoId && <ObtenerFactura id={nuevoDatoId}/>}
-            </div> */}
-            
             <CrearDetalle />         
-            
-
         </div>
     );
 

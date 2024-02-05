@@ -15,6 +15,8 @@ import DetallesFacturaId from './Components/Factura/listarDetalle';
 import ObtenerFactura from './Components/Factura/obtenerFactura';
 import MenuPrincipal from './Components/Menu/Menu';
 import LoginComponent from './Components/Login/ingresar';
+import DetalleListaFactura from './Components/Factura/detalleListaFactura';
+import EliminarDetalle from './Components/Factura/eliminarDetalle';
 
 import './App.css'
 import Navbar from './Components/Menu/Navbar';
@@ -42,6 +44,9 @@ function App() {
               <Route path='crearDetalle' element={<CrearDetalle/>}/>
               <Route path='listarDetalle' element={<DetallesFacturaId/>}/>
               <Route path='obtenerfactura' element={<ObtenerFactura/>}/>
+              <Route path='detallefactura/:id' element={<DetalleListaFactura/>}/>
+              <Route path='eliminarDetalle/:id' element={<EliminarDetalle/>}/>
+              
             </Routes>
           </>
         } />

@@ -21,41 +21,21 @@ const ObtenerFactura = ({ id }) => {
 
   return (
     <>
-      {/* <div className='form'>
-        <p>ID Factura: {facturaData.idFactura}</p>
-        <p>NumFactura: {facturaData.numeroFactura}</p>
-        <p>IGV: {facturaData.igv}</p>
-        <p>Total: {facturaData.total}</p>
-      </div> */}
-      {/* <div class="mb-1 row">
-        <label  class="col-sm-18 col-form-label">SubTotal :</label>
-        <div class="col-sm-1">
-          <input type="number" readonly class="form-control-plaintext"  value={facturaData.subtotal}/>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div>
+            <ul className='d-flex flex-row rounded p-3 border-0' style={{ alignItems: 'flex-start'}}>
+                <div>
+                    <li className="list-group" style={{ fontWeight:"bold", marginRight: "20px"}}>SUBTOTAL :  {facturaData.subtotal}</li>
+                </div>
+                <div>
+                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>IGV      :  {facturaData.igv}</li>
+                </div>
+                <div>
+                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>TOTAL    :  {facturaData.total}</li>
+                </div>
+            </ul>
         </div>
       </div>
-      <div class="mb-1 row">
-        <label  class="col-sm-18 col-form-label">IGV :</label>
-        <div class="col-sm-4">
-          <input type="number" readonly class="form-control-plaintext"  value={facturaData.igv}/>
-        </div>
-      </div>
-      <div class="mb-1 row">
-        <label  class="col-sm-18 col-form-label">Total :</label>
-        <div class="col-sm-4">
-          <input type="number" readonly class="form-control-plaintext" value={facturaData.total}/>
-        </div>
-      </div> */}
-      <br></br>
-      <div>
-        <ul className="list-group">
-          <li className="list-group">SubTotal :  {facturaData.subtotal}</li>
-          <li className="list-group">IGV      :  {facturaData.igv}</li>
-          <li className="list-group">Total    :  {facturaData.total}</li>
-        </ul>
-      </div>
-      
-     
-      
     </>
   );
 };
