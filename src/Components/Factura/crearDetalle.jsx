@@ -19,9 +19,6 @@ const CrearDetalle = () =>{
     const [isButtonClicked, setIsButtonClicked] = useState(false);
 
     const[nuevoDatoId, setNuevoDatoId] = useState(null);
-
-
-
     
 
     const handleProductoChange = (e) => {
@@ -61,7 +58,7 @@ const CrearDetalle = () =>{
             const data = await response.json();
             console.log(data);
             setNuevoDatoId(data.idFactura);
-            setIsButtonClicked(true);
+            // setIsButtonClicked(true);
             setKey(prevkey => prevkey + 1);
 
 
@@ -139,9 +136,13 @@ const CrearDetalle = () =>{
                     </div>
                            
                     
-                    {isButtonClicked && <DetallesFacturaId key={key}/>}
+                    
                 </div>
             </form>
+            <div>
+                <DetallesFacturaId id={nuevoDatoId} key={key} />
+            </div>
+            
             <br></br>
             <div style={{display:'flex', justifyContent:'center'}}>
                 <Link className='btn btn-secondary' to={"/facturas"}>SALIR</Link>
