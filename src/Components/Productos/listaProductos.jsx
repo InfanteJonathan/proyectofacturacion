@@ -13,15 +13,16 @@ function ListaProductos(){
 
   return (
     <div>
+      <br></br>
       <h1>Lista de Productos</h1>
       <br></br>
-      <div>
-      <Link className='btn btn-success' to={`/crearProducto`}>Nuevo Producto</Link>
+      <div style={{display:'flex',justifyContent:'center'}}>
+        <Link className='btn btn-success' to={`/crearProducto`}>Nuevo Producto</Link>
       </div>
       
       <br></br>
-      <div>          
-        <table className="table table-striped">
+      <div style={{display:'flex',justifyContent:'center'}}>          
+        <table className="table table-striped" style={{width:'80%'}}>
           <thead>
             <tr>
               <th scope="col">Id</th>
@@ -31,7 +32,7 @@ function ListaProductos(){
               <th scope="col">Precio</th>
               <th scope="col">Stock</th>
               <th scope="col">Activo</th>
-              <th scope='col'>Acciones</th>
+              <th style={{display:'flex',justifyContent:'center'}} scope='col'>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -44,10 +45,11 @@ function ListaProductos(){
                 <td>{item.precio}</td>
                 <td>{item.stock}</td>
                 <td>{item.activo? 'Si':'No'}</td>
-                <td className='d-flex'>
-                  <Link className='btn btn-secondary' to={`/editarProducto/${item.idProducto}`}>Editar</Link>
-                  <br></br> 
-                  <Link className='btn btn-danger'  to={`/eliminarProducto/${item.idProducto}`}>Eliminar</Link>
+                <td >
+                  <div style={{display:'flex',justifyContent:'center'}}>
+                    <Link className='btn btn-secondary' style={{marginRight:'15px'}} to={`/editarProducto/${item.idProducto}`}>Editar</Link>
+                    <Link className='btn btn-danger'  to={`/eliminarProducto/${item.idProducto}`}>Eliminar</Link>
+                  </div>
                 </td>
               </tr>
             ))}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const EditarProducto = () => {
     const { id } = useParams();
@@ -52,33 +52,44 @@ const EditarProducto = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Código:
-                <input type="text" name="codigo" value={producto.codigo} onChange={handleChange} />
-            </label>
-            <label>
-                Nombre:
-                <input type="text" name="nombre" value={producto.nombre} onChange={handleChange} />
-            </label>
-            <label>
-                Id Familia:
-                <input type="number" name="idFamilia" value={producto.idFamilia} onChange={handleChange} />
-            </label>
-            <label>
-                Precio:
-                <input type="number" name="precio" value={producto.precio} onChange={handleChange} />
-            </label>
-            <label>
-                Stock:
-                <input type="number" name="stock" value={producto.stock} onChange={handleChange} />
-            </label>
-            <label>
-                Activo:
-                <input type="checkbox" name="activo" checked={producto.activo} onChange={handleChange} />
-            </label>
-            <input type="submit" value="Actualizar" />
-        </form>
+        <>
+            <h1>Editar Producto</h1>
+            <form onSubmit={handleSubmit} className="row g-3 flex-column">
+                <div className="col-md-3">
+                    <label htmlFor="codigo" className="form-label">Código:</label>
+                    <input type="text" id="codigo" className="form-control" name="codigo" value={producto.codigo} onChange={handleChange} required />
+                </div>
+                <div className="col-md-4">
+                    <label htmlFor="nombre" className="form-label">Nombre:</label>
+                    <input type="text" id="nombre" className="form-control" name="nombre" value={producto.nombre} onChange={handleChange} required />
+                </div>
+                <div className="col-md-2">
+                    <label htmlFor="idFamilia" className="form-label">Id Familia:</label>
+                    <input type="number" id="idFamilia" className="form-control" name="idFamilia" value={producto.idFamilia} onChange={handleChange} required />
+                </div>
+                <div className="col-md-2">
+                    <label htmlFor="precio" className="form-label">Precio:</label>
+                    <input type="number" id="precio" className="form-control" name="precio" value={producto.precio} onChange={handleChange} min="0.0" step="0.01" required />
+                </div>
+
+                <div className="col-md-2">
+                    <label htmlFor="stock" className="form-label">Stock:</label>
+                    <input type="number" id="stock" className="form-control" name="stock" value={producto.stock} onChange={handleChange} min="0" required />
+                </div>
+                <div className="col-md-2">
+                    <label htmlFor="activo" className="form-label">Activo:</label>
+                    <div className="form-check">
+                        <input type="checkbox" id="activo" className="form-check-input" name="activo" checked={producto.activo} onChange={handleChange} />
+                        <label htmlFor="activo" className="form-check-label">Activo</label>
+                    </div>
+                </div>
+                <div className="col-12">
+                    <button type="submit" className="btn btn-primary" style={{margin:'10px'}}>Actualizar</button>
+                    <Link to={'/productos'} className='btn btn-secondary'>Salir</Link>
+                </div>
+            </form>
+
+        </>
     );
 }
 

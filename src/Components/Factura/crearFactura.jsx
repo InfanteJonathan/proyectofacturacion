@@ -53,55 +53,71 @@ const CrearFactura = () => {
     }, [nuevoDatoId]);
 
     return (
-        <div>
-            <div  style={{justifyContent:"center"}}>
-                <h1>
+        <>
+        <div >
+            <div  style={{display:'flex', justifyContent:"center"}}>
+                <h1 style={{fontWeight:'bold',fontFamily:'-moz-initial'}}>
                     Factura
                 </h1>                 
             </div>
             <form className='rounded p-3 border' style={{backgroundColor: "lightblue"}} onSubmit={handleSubmit}>
                 <div className="row g-3">
-                    <div className="col-sm-3">
-                        Num Factura
+                    <div className="col-sm-3" style={{fontWeight:'bold'}}>
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           Num Factura 
+                        </div>                        
                         <input type="text" value={numeroFactura}
                             onChange={e => setNumeroFactura(e.target.value)}
-                            className="form-control" placeholder="Ejem: F001" aria-label="City" />
+                            className="form-control" placeholder="Ejem: F001" aria-label="City" required />
                     </div>
-                    <div className="col-sm">
-                        Ruc Cliente
+                    <div className="col-sm" style={{fontWeight:'bold'}}>
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                            Ruc Cliente 
+                        </div>                       
                         <input type="text" value={rucCliente}
                             onChange={e => setRucCliente(e.target.value)}
-                            className="form-control" placeholder="Ruc Cliente" aria-label="City" />
+                            className="form-control" aria-label="City" required />
                     </div>
-                    <div className="col-sm">
-                        Razón Social
+                    <div className="col-sm" style={{fontWeight:'bold'}}>
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           Razón Social 
+                        </div>                        
                         <input type="text"
                             value={razonSocial}
                             onChange={e => setRazonSocial(e.target.value)}
-                            className="form-control" placeholder="Razon Social" aria-label="State" />
+                            className="form-control"  aria-label="State" required />
                     </div>
-                    <div className="col-sm">
-                        Porcentaje Igv
+                    <div className="col-sm" style={{fontWeight:'bold'}}>
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           Porcentaje IGV 
+                        </div>
+                        
                         <input type="number" value={porcentajeIgv}
                             onChange={e => setPorcentajeIgv(e.target.value)}
-                            className="form-control" placeholder="Ejem: 0.18" />
+                            className="form-control" placeholder="Ejem: 0.18" min="0" step="0.01" required />
                     </div>
-
                 </div>
-                <br></br>
-                <button className='btn btn-primary' type="submit">Nueva Factura</button>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <br />
+                <div  >
+                    <div style={{display:'flex',justifyContent:'center'}}>
+                        <button style={{fontWeight:'bold',color:'whitesmoke'}} className='btn btn-primary' type="submit">Nueva Factura</button>
+                    </div>                    
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <li className="list-group" style={{fontWeight:"bold", marginRight: "40px"}}>ID FACTURA :  {nuevoDatoId}</li>
+                    </div>
+                </div>
+                
+                {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <div>
-                        <ul className='d-flex flex-row rounded ' style={{backgroundColor: "lightblue", alignItems: 'flex-start'}}>
-                            <div>
-                                <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>ID FACTURA :  {nuevoDatoId}</li>
-                            </div>
+                        <ul >
+                            
                         </ul>
                     </div>
-                </div>
+                </div> */}
             </form>
             <CrearDetalle />         
         </div>
+        </>
     );
 
 }

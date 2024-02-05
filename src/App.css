@@ -14,3 +14,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.small-input {
+  width: 100%; /* Ajusta el ancho del campo de entrada según tus preferencias */
+}

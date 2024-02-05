@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import EliminarDetalle from './eliminarDetalle';
+import ObtenerFactura from "./obtenerFactura";
 
 
 
 const DetallesFacturaId = ({ id }) => {
     const [detalles, setDetalles] = useState([]);
-
+    const [ultimaFactura, setUltimaFactura] = useState(null);
 
     const obtenerDetalles = async (id) => {
         try{
@@ -35,9 +36,18 @@ const DetallesFacturaId = ({ id }) => {
         
     }, [id]);
 
+    useEffect(()=>{
+        fetch('https://localhost:7252/api/Factura/ultimaFactura')
+          .then(res => res.json())
+          .then(data => { setUltimaFactura(data);})
+          .catch(err => console.error(err));
+    
+      },[]);
+
 
     return (
         <>
+            {detalles.length>0 && <ObtenerFactura id={ultimaFactura} actualizar={obtenerDetalles} />}
             <div style={{ maxHeight: '300px', overflow: 'scroll' }}>
                 <table className="table table-striped">
                     <thead>
@@ -64,7 +74,7 @@ const DetallesFacturaId = ({ id }) => {
                                     <td>{detalle.cantidad}</td>
                                     <td>{detalle.subtotal}</td>
                                     <td>
-                                    <button onClick={() => handleEliminar(detalle.idItem)}>Eliminar</button>
+                                    <button className="btn btn-danger" onClick={() => handleEliminar(detalle.idItem)}>Eliminar</button>
                                     </td>
                                 </tr>
                                 

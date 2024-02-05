@@ -13,8 +13,9 @@ function ListaFacturas(){
   return (
     <div>
       <h1>Lista de Facturas</h1>
-        <Link className='btn btn-success'  to={`/crearFactura`}>Crear</Link>
-      <br></br>
+      <div style={{display:'flex', justifyContent:'center',marginBottom:'15px'}}>
+        <Link className='btn btn-success'  to={`/crearFactura`}>Agregar Factura</Link>
+      </div>
       <div style={{maxHeight:'500px',overflow:'scroll'}}>               
         <table className="table table-striped">
           <thead>
@@ -39,8 +40,8 @@ function ListaFacturas(){
                 <td>{item.razonSocial}</td>
                 <td>{item.subtotal}</td>
                 <td>{item.porcentajeIgv}</td>
-                <td>{item.igv}</td>
-                <td>{item.total}</td>              
+                <td>{parseFloat(item.igv).toFixed(2)}</td>
+                <td>{parseFloat(item.total).toFixed(2)}</td>              
                 <td>
                     <Link className='btn btn-secondary'  to={`/detallefactura/${item.idFactura}`}>Detalles</Link>
                 </td>

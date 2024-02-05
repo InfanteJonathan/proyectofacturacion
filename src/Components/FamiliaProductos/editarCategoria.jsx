@@ -50,21 +50,28 @@ const EditarFamiliaProducto = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Código:
-                <input type="text" name="codigo" value={familiaProducto.codigo} onChange={handleChange} />
-            </label>
-            <label>
-                Nombre:
-                <input type="text" name="nombre" value={familiaProducto.nombre} onChange={handleChange} />
-            </label>
-            <label>
-                Activo:
-                <input type="checkbox" name="activo" checked={familiaProducto.activo} onChange={handleChange} />
-            </label>
-            <input type="submit" value="Actualizar" />
+        <>
+        <h1 style={{margin:'10px 0 20px 0'}}>Editar Categoria</h1>
+        <form onSubmit={handleSubmit} className="row g-3 flex-column">
+            <div className="col-md-4">
+                <label htmlFor="codigo" className="form-label">Código:</label>
+                <input type="text" id="codigo" className="form-control" name="codigo" value={familiaProducto.codigo} onChange={handleChange} required />
+            </div>
+            <div className="col-md-4">
+                <label htmlFor="nombre" className="form-label">Nombre:</label>
+                <input type="text" id="nombre" className="form-control" name="nombre" value={familiaProducto.nombre} onChange={handleChange} required />
+            </div>
+            <div className="col-md-4">
+                <label htmlFor="activo" className="form-check-label">Activo:</label>
+                <div className="form-check">
+                    <input type="checkbox" id="activo" className="form-check-input" name="activo" checked={familiaProducto.activo} onChange={handleChange} />
+                </div>
+            </div>
+            <div className="col-12">
+                <button type="submit" className="btn btn-primary">Actualizar</button>
+            </div>
         </form>
+        </>
     );
 }
 

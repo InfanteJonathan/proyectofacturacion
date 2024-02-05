@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -58,46 +58,48 @@ const CrearProductoFormulario = () =>{
     return (
         <>
         <br></br>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <a>Código</a>
-                    <br/>
-                    <input type="text" value={codigo} onChange={e => setCodigo(e.target.value)} placeholder='Ejem: P0001'/>
-                </label>
-                <label>
-                    <a>Nombre</a>
-                    <br/>
-                    <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} />
-                </label>
-                <label>
-                    <a>Categoria</a>
-                    <br/>
-                    <select value={idFamilia} onChange={e => setIdFamilia(e.target.value)}>
-                        {familias.map(familia => (
-                            <option key={familia.idFamilia} value={familia.idFamilia}>
-                                {familia.nombre}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-                <label>
-                    <a>Precio</a>
-                    <br/>
-                    <input type="number" value={precio} onChange={e => setPrecio(e.target.value)} />
-                </label>
-                <label>
-                    <a>Stock</a>
-                    <br/>
-                    <input type="number" value={stock} onChange={e => setStock(e.target.value)} />
-                </label>
-                <label>
-                    <a>Activo</a>
+        <h1>Nuevo Producto</h1>
+        <form className='row g-3 flex-column' onSubmit={handleSubmit}>
+            <div className="col-md-3">
+                <label htmlFor="codigo" className="form-label">Código</label>
+                <input type="text" id="codigo" className="form-control" value={codigo} onChange={e => setCodigo(e.target.value)} placeholder='Ejem: P0001' required />
+            </div>
+            <div className="col-md-4">
+                <label htmlFor="nombre" className="form-label">Nombre</label>
+                <input type="text" id="nombre" className="form-control" value={nombre} onChange={e => setNombre(e.target.value)} required />
+            </div>
+            <div className="col-md-4">
+                <label htmlFor="categoria" className="form-label">Categoría</label>
+                <select id="categoria" className="form-select" value={idFamilia} onChange={e => setIdFamilia(e.target.value)} required>
+                    {familias.map(familia => (
+                        <option key={familia.idFamilia} value={familia.idFamilia}>
+                            {familia.nombre}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="col-md-2">
+                <label htmlFor="precio" className="form-label">Precio</label>
+                <input type="number" id="precio" className="form-control" value={precio} onChange={e => setPrecio(e.target.value)} min="0" required />
+            </div>
+            <div className="col-md-2">
+                <label htmlFor="stock" className="form-label">Stock</label>
+                <input type="number" id="stock" className="form-control" value={stock} onChange={e => setStock(e.target.value)} min="0" required />
+            </div>
+            <div className="col-12">
+                <div className="form-check">
+                    <input type="checkbox" id="activo" className="form-check-input" checked={activo} onChange={e => setActivo(e.target.checked)} />
+                    <label htmlFor="activo" className="form-check-label">Activo</label>
+                </div>
+            </div>
+            
+            <div className="col-12">
+                <button type="submit" className="btn btn-primary" style={{margin:'10px'}}>Crear Producto</button>
+                <Link to={'/productos'} className='btn btn-secondary'>Salir</Link>
+            </div>
+        </form>
 
-                    <input type="checkbox" checked={activo} onChange={e => setActivo(e.target.checked)} />
-                </label>
-                <button type="submit">Crear Producto</button>
-            </form>
-                          
+   
   
         </>
         

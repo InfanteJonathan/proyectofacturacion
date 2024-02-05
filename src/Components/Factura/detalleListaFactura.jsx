@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import EliminarDetalle from './eliminarDetalle';
 
 const DetalleListaFactura = () => {
@@ -38,7 +38,7 @@ const DetalleListaFactura = () => {
     return (
         <div>
             <br></br>
-            <h2>Detalle de la Factura </h2>
+            <h2>Detalles Factura </h2>
             <table className='table table-striped'>
                 <thead>
                     <tr>
@@ -61,15 +61,19 @@ const DetalleListaFactura = () => {
                                 <td>{detalle.nombreProducto}</td>
                                 <td>{detalle.precio}</td>
                                 <td>{detalle.cantidad}</td>
-                                <td>{detalle.subtotal}</td>
+                                <td>{parseFloat(detalle.subtotal).toFixed(2)}</td>
                                 <td>
-                                    <button onClick={() => handleEliminar(detalle.idItem)}>Eliminar</button>
+                                    <button className='btn btn-danger' onClick={() => handleEliminar(detalle.idItem)}>Eliminar</button>
                                 </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
+            <div style={{display:'flex',justifyContent:'center'}}>
+                <Link to={'/facturas'} style={{width:'10%'}} className='btn btn-secondary' >SALIR</Link>
+            </div>
+            
         </div>
     );
 };

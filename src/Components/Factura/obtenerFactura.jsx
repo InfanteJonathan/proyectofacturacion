@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ObtenerFactura = ({ id }) => {
+const ObtenerFactura = ({ id, actualizar }) => {
   const [facturaData, setFacturaData] = useState(null);
 
   useEffect(() => {
@@ -12,15 +12,16 @@ const ObtenerFactura = ({ id }) => {
       } catch (error) {
         console.error('Error al obtener los datos de la factura:', error);
       }
-    };
+    };    
 
     fetchData();
-  }, [id]);
+  }, [id,actualizar]);
 
   if (!facturaData) return <div>Cargando...</div>;
 
   return (
     <>
+      
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <div>
             <ul className='d-flex flex-row rounded p-3 border-0' style={{ alignItems: 'flex-start'}}>
@@ -28,10 +29,10 @@ const ObtenerFactura = ({ id }) => {
                     <li className="list-group" style={{ fontWeight:"bold", marginRight: "20px"}}>SUBTOTAL :  {facturaData.subtotal}</li>
                 </div>
                 <div>
-                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>IGV      :  {facturaData.igv}</li>
+                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>IGV      :  {parseFloat(facturaData.igv).toFixed(2)}</li>
                 </div>
                 <div>
-                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>TOTAL    :  {facturaData.total}</li>
+                    <li className="list-group" style={{fontWeight:"bold", marginRight: "20px"}}>TOTAL    :  {parseFloat(facturaData.total).toFixed(2)}</li>
                 </div>
             </ul>
         </div>

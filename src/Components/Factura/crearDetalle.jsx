@@ -97,20 +97,29 @@ const CrearDetalle = () =>{
 
     return (
         <>
-            <ObtenerFactura id={nuevoDatoId} key={key}/>
-        <h2>DETALLES</h2>       
+            {/* <ObtenerFactura id={nuevoDatoId} key={key}/> */}
+        {/* <h2 style={{fontWeight:'bold',fontFamily:'-moz-initial'}}>Detalles</h2>        */}
             <form className='rounded p-3 border' style={{backgroundColor: "lightblue"}} onSubmit={handleSubmit}>
-                <div className='row g-3'>
+                <h2 style={{fontWeight:'bold',fontFamily:'-moz-initial',display:'flex',justifyContent:'center'}}>Detalles</h2>
+                <br></br>
+                <div className='row g-3' style={{fontWeight:'bold'}}>
                     <div className='col-sm-2'>
-                        ID Item
-                        <input type="text" className="form-control" placeholder='Ejem: 0001' value={idItem} onChange={e => setIdItem(e.target.value)} />
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           ID Item 
+                        </div>                        
+                        <input type="text" className="form-control" placeholder='Ejem: 0001' value={idItem} onChange={e => setIdItem(e.target.value)} required />
                     </div>
                     <div className='col-sm'>
-                        Id Factura
-                        <input type="number" className="form-control" value={idFactura} onChange={e => setIdFactura(e.target.value)} />
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                          ID Factura  
+                        </div>                        
+                        <input type="number" className="form-control" value={idFactura} onChange={e => setIdFactura(e.target.value)}  required/>
                     </div>
                     <div className='col-sm'>
-                        Nombre Producto
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           Producto 
+                        </div>
+                        
                         <select value={idProducto} className="form-control" onChange={handleProductoChange}>
                             {productos.map(producto => (
                                 <option key={producto.idProducto} value={producto.idProducto}>
@@ -120,29 +129,33 @@ const CrearDetalle = () =>{
                         </select>
                     </div>
                     <div className='col-sm'>
-                        Codigo Producto
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                           Código
+                        </div>                        
                         <input type="text" className="form-control" value={codigoProducto} onChange={() => {}}/>
                     </div>
                     <div className='col-sm'>
-                        Precio
+                        <div style={{display:'flex', justifyContent:"center"}}>
+                          Precio  
+                        </div>
+                        
                         <input type="number" className="form-control" value={precio} onChange={() => {}}/>
                     </div>
                     <div className='col-sm'>
-                        Cantidad
-                        <input type="number" className="form-control" value={cantidad} onChange={e => setCantidad(e.target.value)} />
+                        <di style={{display:'flex', justifyContent:"center"}}>
+                          Cantidad  
+                        </di>
+                        
+                        <input type="number" className="form-control" value={cantidad} onChange={e => setCantidad(e.target.value)} required />
                     </div>
-                    <div className='col-sm d-flex'>
+                    <div className='col-sm' style={{marginTop:'40px',display:'flex',justifyContent:'center'}}>
                         <button className='btn btn-success' type="submit">Agregar</button>              
-                    </div>
-                           
-                    
-                    
+                    </div>                                     
                 </div>
             </form>
-            <div>
+            <div style={{marginTop:'10px'}}>
                 <DetallesFacturaId id={nuevoDatoId} key={key} />
-            </div>
-            
+            </div>            
             <br></br>
             <div style={{display:'flex', justifyContent:'center'}}>
                 <Link className='btn btn-secondary' to={"/facturas"}>SALIR</Link>
