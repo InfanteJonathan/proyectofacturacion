@@ -21,7 +21,7 @@ function ListaCategoria(){
         </Button>
       </div>
       
-      <div style={{display:'flex',justifyContent:'center'}}>
+      <div style={{display:'flex',justifyContent:'center', maxHeight: '600px', overflow: 'scroll'}}>
         <br></br>
         <table className="table table-striped" style={{width:'70%'}}>
           <thead>

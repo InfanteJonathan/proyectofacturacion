@@ -11,6 +11,7 @@ const EditarProducto = () => {
         idFamilia: '',
         precio: '',
         stock: '',
+        imagen: '',
         activo: true,
     });
 
@@ -75,6 +76,10 @@ const EditarProducto = () => {
                 <div className="col-md-2">
                     <label htmlFor="stock" className="form-label">Stock:</label>
                     <input type="number" id="stock" className="form-control" name="stock" value={producto.stock} onChange={handleChange} min="0" required />
+                </div>
+                <div className="col-md-4">
+                    <label htmlFor="imagen" className="form-label">Imagen:</label>
+                    <input type="text" id="imagen" className="form-control" name="imagen" value={producto.imagen} onChange={handleChange}/>
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="activo" className="form-label">Activo:</label>

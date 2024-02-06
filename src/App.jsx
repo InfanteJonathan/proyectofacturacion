@@ -20,6 +20,7 @@ import EliminarDetalle from './Components/Factura/eliminarDetalle';
 
 import './App.css'
 import Navbar from './Components/Menu/Navbar';
+import FooterMenu from './Components/Menu/footer';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path='eliminarDetalle/:id' element={<EliminarDetalle/>}/>
               
             </Routes>
+            <FooterMenu/>
           </>
         } />
       </Routes>

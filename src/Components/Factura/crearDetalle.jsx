@@ -142,9 +142,9 @@ const CrearDetalle = () =>{
                         <input type="number" className="form-control" value={precio} onChange={() => {}}/>
                     </div>
                     <div className='col-sm'>
-                        <di style={{display:'flex', justifyContent:"center"}}>
+                        <div style={{display:'flex', justifyContent:"center"}}>
                           Cantidad  
-                        </di>
+                        </div>
                         
                         <input type="number" className="form-control" value={cantidad} onChange={e => setCantidad(e.target.value)} required />
                     </div>

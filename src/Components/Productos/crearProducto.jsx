@@ -12,6 +12,7 @@ const CrearProductoFormulario = () =>{
     const[idFamilia,setIdFamilia] = useState('');
     const[precio,setPrecio] = useState('');
     const[stock,setStock] = useState('');
+    const[imagen,setImagen] = useState('');
     const[activo,setActivo] = useState(false);
     const[familias,setFamilias] = useState([]);
 
@@ -25,6 +26,7 @@ const CrearProductoFormulario = () =>{
             IdFamilia : idFamilia,
             Precio : precio,
             Stock : stock,
+            Imagen : imagen,
             Activo : activo,
         };        
 
@@ -80,11 +82,15 @@ const CrearProductoFormulario = () =>{
             </div>
             <div className="col-md-2">
                 <label htmlFor="precio" className="form-label">Precio</label>
-                <input type="number" id="precio" className="form-control" value={precio} onChange={e => setPrecio(e.target.value)} min="0" required />
+                <input type="number" id="precio" className="form-control" value={precio} onChange={e => setPrecio(e.target.value)} min="0" step="0.01" required />
             </div>
             <div className="col-md-2">
                 <label htmlFor="stock" className="form-label">Stock</label>
                 <input type="number" id="stock" className="form-control" value={stock} onChange={e => setStock(e.target.value)} min="0" required />
+            </div>
+            <div className="col-md-8">
+                <label htmlFor="imagen" className="form-label">Imagen</label>
+                <input type="text" id="imagen" className="form-control" value={imagen} onChange={e => setImagen(e.target.value)} placeholder='URL'/>
             </div>
             <div className="col-12">
                 <div className="form-check">

@@ -21,7 +21,7 @@ function ListaProductos(){
       </div>
       
       <br></br>
-      <div style={{display:'flex',justifyContent:'center'}}>          
+      <div style={{display:'flex',justifyContent:'center',maxHeight: '600px', overflow: 'scroll'}}>          
         <table className="table table-striped" style={{width:'80%'}}>
           <thead>
             <tr>

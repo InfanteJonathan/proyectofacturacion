@@ -1,10 +1,14 @@
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  position: relative;
+  padding-bottom: 3em ;
+  min-height: 100vh;
 }
 
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -17,4 +21,39 @@ body {
 
 .small-input {
   width: 100%; /* Ajusta el ancho del campo de entrada según tus preferencias */
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+}
+/* Menu principal*/
+
+.catalog-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.product-item {
+  width: 25%; /* Para mostrar 4 elementos por fila */
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-item p {
+  margin-top: 10px;
+  margin-bottom: 1px ;
+}
+
+.product-item img{
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
 }
