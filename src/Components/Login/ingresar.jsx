@@ -14,7 +14,7 @@ const LoginComponent = () => {
         event.preventDefault();
 
         if (new Date() < bloqueoHasta) {
-            setError('Cuenta Bloqueada. Por favor, espera unos minutos antes de intentarlo de nuevo');
+            setError('Cuenta Bloqueada. Por favor, espera unos segundos antes de intentarlo de nuevo');
             return;
         }
         let intentosFallidos = contador + 1;
@@ -35,30 +35,39 @@ const LoginComponent = () => {
         setContador(intentosFallidos);
 
         if(intentosFallidos>=3){
-            setBloqueoHasta(new Date().setMinutes(new Date().getMinutes()+1));
+            setBloqueoHasta(new Date().setMinutes(new Date().getSeconds()+1));
             setContador(0);
 
         }
     };
 
     return (
-        <Container>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Usuario</Form.Label>
-                    <Form.Control type="text" placeholder="Ingresa tu usuario" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                </Form.Group>
+        <>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+            <div style={{backgroundColor:'lightgrey',borderRadius:'5%',padding:'4em'}} >
+                <form className='row g-4 flex-column' onSubmit={handleSubmit}>
+                    <div className="col-mb-8" controlId="formBasicEmail">
+                        <label style={{fontWeight:'bold'}} className="form-label">Usuario</label>
+                        <input className="form-control" type="text" placeholder="Ingresa tu usuario" value={nombre} onChange={(e) => setNombre(e.target.value)} required/>
+                    </div>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" placeholder="Contraseña" value={contrasenia} onChange={(e) => setContrasenia(e.target.value)} />
-                </Form.Group>
-                {error && <Alert variant='danger'>{error}</Alert>}
-                <Button variant="primary" type="submit">
-                    Ingresar
-                </Button>
-            </Form>
-        </Container>
+                    <div className="col-mb-8" controlId="formBasicPassword">
+                        <label style={{fontWeight:'bold'}} className="form-label">Contraseña</label>
+                        <input className="form-control" type="password" placeholder="Contraseña" value={contrasenia} onChange={(e) => setContrasenia(e.target.value)} />
+                    </div>
+                    {error && <Alert variant='danger'>{error}</Alert>}
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button style={{ width: '150px' }} variant="primary" type="submit">
+                            Ingresar
+                        </Button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+            
+        </>
     );
 };
 

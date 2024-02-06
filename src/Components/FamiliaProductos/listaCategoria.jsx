@@ -13,7 +13,7 @@ function ListaCategoria(){
 
   return (
     <div>
-      <h1 style={{margin:'15px 0 0 0'}}>Lista de Categorias</h1>
+      <h1 style={{margin:'15px 0 0 120px'}}>Lista de Categorias</h1>
       <br></br>
       <div style={{display:'flex',justifyContent:'center',marginBottom:'10px'}}>
         <Button className='btn btn-success'>

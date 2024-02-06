@@ -14,7 +14,10 @@ function ListaProductos(){
   return (
     <div>
       <br></br>
-      <h1>Lista de Productos</h1>
+      <div style={{marginLeft:'80px'}}>
+        <h1 >Lista de Productos</h1>
+      </div>
+      
       <br></br>
       <div style={{display:'flex',justifyContent:'center'}}>
         <Link className='btn btn-success' to={`/crearProducto`}>Nuevo Producto</Link>
