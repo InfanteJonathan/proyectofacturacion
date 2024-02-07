@@ -1,11 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import DetallesFacturaId from './listarDetalle';
-import ObtenerFactura from './obtenerFactura';
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 const CrearDetalle = () =>{
+    
     const[idItem, setIdItem] = useState('');
     const[idFactura, setIdFactura] = useState('');
     const[idProducto, setIdProducto] = useState('');

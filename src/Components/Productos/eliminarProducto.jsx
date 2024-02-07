@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams,useNavigate, Link } from "react-router-dom";
 
 const EliminarProducto = () =>{
     const {id}  = useParams();
@@ -23,15 +23,20 @@ const EliminarProducto = () =>{
     }
 
     return(
-        <Card>
-            <div>
-                ¿Esta Seguro de Eliminar el producto?
+        <div style={{display:'flex',justifyContent:'center',padding:'5em'}}>
+            <div style={{backgroundColor:'whitesmoke',padding:'4em',borderRadius:'5px'}}>
+                <div style={{fontWeight:'bold'}}>
+                    ¿Esta Seguro de Eliminar el producto?
+                </div>
+                <div style={{display:'flex',justifyContent:'center',marginTop:'15px'}}>
+                    <Button  className="btn btn-danger" style={{marginRight:'10px'}} onClick={handleDelete}>
+                        Eliminar
+                    </Button>
+                    <Link className="btn btn-primary" to={'/productos'}>Salir</Link>
+                </div>
+                
             </div>
-            <Button className="btn btn-danger" onClick={handleDelete}>
-                Eliminar Producto
-            </Button>
-
-        </Card>
+        </div>
         
     )
 }
